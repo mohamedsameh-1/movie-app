@@ -46,6 +46,7 @@ class CustomTextField extends StatelessWidget {
       style: style ?? AppStyles.w400S16White,
       maxLines: maxLines ?? 1,
       decoration: InputDecoration(
+        errorMaxLines: 2,
         fillColor: AppColors.darkGreenGray,
         filled: true,
         enabledBorder: customOutlineInputBorder(borderColor: borderColor),
@@ -55,10 +56,11 @@ class CustomTextField extends StatelessWidget {
           borderColor: AppColors.red,
         ),
         prefixIcon: prefixIcon,
-        // prefixIconColor: prefixIconColor ?? AppColors.grey,
+        prefixIconColor: prefixIconColor ?? AppColors.white,
         hintText: hintText,
         hintStyle: hintStyle ?? AppStyles.w400S16White,
         suffixIcon: suffixIcon,
+        suffixIconColor: prefixIconColor ?? AppColors.white,
       ),
     );
   }

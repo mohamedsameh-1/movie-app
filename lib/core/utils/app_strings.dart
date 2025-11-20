@@ -13,7 +13,7 @@ abstract class AppStrings {
   static const String next = 'Next';
   static const String back = 'Back';
   static const String finish = 'Finish';
-  static const String firstLoggedIn = 'firstLoggedIn';
+  static const String isFirstOpen = 'isFirstOpen';
   //==================LogIn=============================
   static const String email = 'Email';
   static const String password = 'Password';
@@ -22,4 +22,19 @@ abstract class AppStrings {
   static const String dontHaveAccount = 'Don\'t Have Account ? ';
   static const String createOne = 'Create One';
   static const String loginWithGoogle = 'Login With Google';
+  static const String oR = 'OR';
+  static const String en = 'EN';
+  static const String ar = 'عربي';
+  //==================Register=============================
+  static const String register = 'Register';
+  static const String name = 'Name';
+  static const String confirmPassword = 'Confirm Password';
+  static const String phoneNumber = 'Phone Number';
+  static const String createAccount = 'Create Account';
+  static const String alreadyHaveAccount = 'Already Have Account ?';
+  static const String verifyEmail = 'Verify Email';
+  static const String forgetPasswordAppBar = 'Forget Password';
+  // static const String loggedInSuccessfuly = 'Logged In successfully';
+  static const String tokenOfLoggedInOrCreatedAccount =
+      'tokenLoggedInOrCreatedAccount';
 }

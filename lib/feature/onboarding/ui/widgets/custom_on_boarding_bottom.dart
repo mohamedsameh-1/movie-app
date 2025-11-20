@@ -55,11 +55,11 @@ class CustomOnboardingBottom extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 if (index == 3) {
-                  Navigator.pushReplacementNamed(context, AppRoutes.logIn);
                   SharedPreference.saveData(
-                    key: AppStrings.firstLoggedIn,
+                    key: AppStrings.isFirstOpen,
                     value: true,
                   );
+                  Navigator.pushReplacementNamed(context, AppRoutes.logIn);
                 } else {
                   controller.nextPage(
                     duration: Duration(milliseconds: 300),

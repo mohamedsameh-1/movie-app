@@ -28,16 +28,25 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_toggle_switch: ^0.8.5
+  connectivity_plus: ^7.0.0
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  dio: ^5.9.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
+  get_it: ^9.0.5
   google_fonts: ^6.3.2
   icons_plus: ^5.0.0
+  injectable: ^2.6.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:
+  injectable_generator: ^2.9.1
+  build_runner: ^2.10.3
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
