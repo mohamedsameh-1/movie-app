@@ -8,5 +8,11 @@ class AppTheme {
       backgroundColor: AppColors.black,
       foregroundColor: AppColors.yellow,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: AppColors.yellow,
+      unselectedItemColor: AppColors.white,
+      backgroundColor: AppColors.darkGreenGray,
+      type: BottomNavigationBarType.fixed,
+    ),
   );
 }

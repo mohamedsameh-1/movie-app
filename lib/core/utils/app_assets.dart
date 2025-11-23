@@ -16,4 +16,6 @@ abstract class AppAssets {
   // static const String avatar7Image = '$_baseUrl/avatar_7.png';
   static const String avatar8Image = '$_baseUrl/avatar_8.png';
   static const String avatar9Image = '$_baseUrl/avatar_9.png';
+  static const String availableNowImage = '$_baseUrl/Available Now.png';
+  static const String watchNowImage = '$_baseUrl/Watch Now.png';
 }

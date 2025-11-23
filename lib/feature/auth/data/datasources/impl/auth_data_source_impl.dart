@@ -98,13 +98,6 @@ class AuthDataSourceImpl implements AuthDataSource {
         } else {
           //server Erorr
           return Left(ServerFailure(failureMessage: logInResponse.message));
-          // String errorMessage;
-          // if (response.data['message'] is List) {
-          //   errorMessage = (response.data['message'] as List).join('\n');
-          // } else {
-          //   errorMessage = response.data['message'].toString();
-          // }
-          // return Left(ServerFailure(failureMessage: errorMessage));
         }
       } else {
         //Network Error

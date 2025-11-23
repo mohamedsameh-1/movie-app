@@ -49,4 +49,9 @@ abstract class AppStyles {
     fontSize: 14.sp,
     color: AppColors.white,
   );
+  static TextStyle w700S20Grey = GoogleFonts.inter(
+    fontWeight: FontWeight.w700,
+    fontSize: 20.sp,
+    color: AppColors.grey,
+  );
 }

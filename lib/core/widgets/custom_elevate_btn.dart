@@ -5,10 +5,14 @@ import 'package:movie_app/core/utils/app_styles.dart';
 class CustomElevateBtn extends StatelessWidget {
   final String text;
   final void Function() onPressed;
+  final Color? backgroundColor;
+  final TextStyle? style;
   const CustomElevateBtn({
     super.key,
     required this.text,
     required this.onPressed,
+    this.backgroundColor,
+    this.style,
   });
 
   @override
@@ -16,7 +20,7 @@ class CustomElevateBtn extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: Size.fromWidth(3000),
-        backgroundColor: AppColors.yellow,
+        backgroundColor: backgroundColor ?? AppColors.yellow,
         // foregroundColor: AppColors.lightBlueff,
         padding: EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -24,7 +28,7 @@ class CustomElevateBtn extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(text, style: AppStyles.w400S20Black),
+      child: Text(text, style: style ?? AppStyles.w400S20Black),
     );
   }
 }

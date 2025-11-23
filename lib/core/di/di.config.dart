@@ -22,6 +22,32 @@ import '../../feature/auth/domain/usecase/log_in_use_case.dart' as _i73;
 import '../../feature/auth/domain/usecase/register_use_case.dart' as _i717;
 import '../../feature/auth/ui/viewmodel/login/log_in_cubit.dart' as _i1069;
 import '../../feature/auth/ui/viewmodel/register/register_cubit.dart' as _i518;
+import '../../feature/home/hometab/data/datasource/remote/home_tab_remote_data_source.dart'
+    as _i615;
+import '../../feature/home/hometab/data/datasource/remote/home_tab_remote_data_source_impl.dart'
+    as _i403;
+import '../../feature/home/hometab/data/repo/home_tab_repo_impl.dart' as _i765;
+import '../../feature/home/hometab/domain/repo/home_tab_repo.dart' as _i79;
+import '../../feature/home/hometab/domain/usecase/get_list_movie_use_case.dart'
+    as _i563;
+import '../../feature/home/hometab/ui/viewmodel/list_movie/list_movie_cubit.dart'
+    as _i700;
+import '../../feature/home/movie_details/data/datasources/remote/movie_details_remote_data_source.dart'
+    as _i406;
+import '../../feature/home/movie_details/data/datasources/remote/movie_details_remote_data_source_impl.dart'
+    as _i636;
+import '../../feature/home/movie_details/data/repo/movie_details_repo_impl.dart'
+    as _i446;
+import '../../feature/home/movie_details/domain/repo/movie_details_repo.dart'
+    as _i220;
+import '../../feature/home/movie_details/domain/usecase/movie_details_use_case.dart'
+    as _i498;
+import '../../feature/home/movie_details/domain/usecase/movie_suggestion_use_case.dart'
+    as _i1050;
+import '../../feature/home/movie_details/ui/viewmodel/movie_details/movie_details_cubit.dart'
+    as _i426;
+import '../../feature/home/movie_details/ui/viewmodel/movie_suggestion/movie_suggestion_cubit.dart'
+    as _i990;
 import '../api/api_manger.dart' as _i339;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -38,11 +64,35 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1021.AuthrRepo>(
       () => _i945.AuthRepoImpl(authDataSource: gh<_i244.AuthDataSource>()),
     );
+    gh.factory<_i615.HomeTabRemoteDataSource>(
+      () => _i403.HomeTabRemoteDataSourceImpl(apiManger: gh<_i339.ApiManger>()),
+    );
+    gh.factory<_i79.HomeTabRepo>(
+      () => _i765.HomeTabRepoImpl(
+        homeTabRemoteDataSource: gh<_i615.HomeTabRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i406.MovieDetailsRemoteDataSource>(
+      () => _i636.MovieDetailsRemoteDataSourceImpl(
+        apiManger: gh<_i339.ApiManger>(),
+      ),
+    );
+    gh.factory<_i563.GetListMovieUseCase>(
+      () => _i563.GetListMovieUseCase(homeTabRepo: gh<_i79.HomeTabRepo>()),
+    );
+    gh.factory<_i220.MovieDetailsRepo>(
+      () => _i446.MovieDetailsRepoImpl(
+        movieDetailsRemoteDataSource: gh<_i406.MovieDetailsRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i73.LogInUseCase>(
       () => _i73.LogInUseCase(authrRepo: gh<_i1021.AuthrRepo>()),
     );
     gh.factory<_i717.RegisterUseCase>(
       () => _i717.RegisterUseCase(authrRepo: gh<_i1021.AuthrRepo>()),
+    );
+    gh.factory<_i700.ListMovieCubit>(
+      () => _i700.ListMovieCubit(gh<_i563.GetListMovieUseCase>()),
     );
     gh.factory<_i518.RegisterCubit>(
       () => _i518.RegisterCubit(
@@ -50,8 +100,24 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i73.LogInUseCase>(),
       ),
     );
+    gh.factory<_i498.MovieDetailsUseCase>(
+      () => _i498.MovieDetailsUseCase(
+        movieDetailsRepo: gh<_i220.MovieDetailsRepo>(),
+      ),
+    );
+    gh.factory<_i1050.MovieSuggestionUseCase>(
+      () => _i1050.MovieSuggestionUseCase(
+        movieDetailsRepo: gh<_i220.MovieDetailsRepo>(),
+      ),
+    );
+    gh.factory<_i990.MovieSuggestionCubit>(
+      () => _i990.MovieSuggestionCubit(gh<_i1050.MovieSuggestionUseCase>()),
+    );
     gh.factory<_i1069.LogInCubit>(
       () => _i1069.LogInCubit(gh<_i73.LogInUseCase>()),
+    );
+    gh.factory<_i426.MovieDetailsCubit>(
+      () => _i426.MovieDetailsCubit(gh<_i498.MovieDetailsUseCase>()),
     );
     return this;
   }

@@ -37,4 +37,11 @@ abstract class AppStrings {
   // static const String loggedInSuccessfuly = 'Logged In successfully';
   static const String tokenOfLoggedInOrCreatedAccount =
       'tokenLoggedInOrCreatedAccount';
+  //==================MovieDetails=============================
+  static const String screenShots = 'Screen Shots';
+  static const String similar = 'Similar';
+  static const String summary = 'Summary';
+  static const String cast = 'Cast';
+  static const String genres = 'Genres';
+  static const String seeMore = 'See More';
 }

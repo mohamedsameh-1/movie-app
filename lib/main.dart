@@ -10,6 +10,7 @@ import 'package:movie_app/core/utils/shared_prefrence.dart';
 import 'package:movie_app/feature/auth/ui/views/forget_password_view.dart';
 import 'package:movie_app/feature/auth/ui/views/log_in_views.dart';
 import 'package:movie_app/feature/auth/ui/views/register_view.dart';
+import 'package:movie_app/feature/home/movie_details/ui/views/movie_details_view.dart';
 import 'package:movie_app/feature/home/ui/views/home_views.dart';
 import 'package:movie_app/feature/onboarding/ui/on_boarding_views.dart';
 
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.register: (context) => RegisterView(),
             AppRoutes.forgetPassword: (context) => ForgetPasswordView(),
             AppRoutes.homeViews: (context) => HomeViews(),
+            AppRoutes.movieDetailsViews: (context) => MovieDetailsView(),
           },
         );
       },

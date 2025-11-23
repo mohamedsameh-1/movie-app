@@ -5,13 +5,17 @@ import 'package:movie_app/core/api/api_constants.dart';
 @singleton
 class ApiManger {
   final dio = Dio();
-  Future<Response> getData({
+  Future<Response> getData(
+    String? path, {
+    // apiConstants,
     required String endPoint,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   }) {
+    final url = (path ?? ApiConstants.baseUrl) + endPoint;
+    print((path ?? ApiConstants.baseUrl) + endPoint);
     return dio.get(
-      ApiConstants.baseUrl + endPoint,
+      url,
       queryParameters: queryParameters,
       options: Options(headers: headers, validateStatus: (status) => true),
     );
