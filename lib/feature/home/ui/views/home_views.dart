@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/feature/home/exploretab/explore_tab_view.dart';
 import 'package:movie_app/feature/home/hometab/home_tab_view.dart';
 import 'package:movie_app/feature/home/profiletab/profile_tab_view.dart';
-import 'package:movie_app/feature/home/searchtab/search_tab_view.dart';
+import 'package:movie_app/feature/home/searchtab/ui/view/search_tab_view.dart';
 
 class HomeViews extends StatefulWidget {
   const HomeViews({super.key});

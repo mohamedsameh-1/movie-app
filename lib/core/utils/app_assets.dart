@@ -18,4 +18,7 @@ abstract class AppAssets {
   static const String avatar9Image = '$_baseUrl/avatar_9.png';
   static const String availableNowImage = '$_baseUrl/Available Now.png';
   static const String watchNowImage = '$_baseUrl/Watch Now.png';
+  static const String searchEmptyImage = '$_baseUrl/seach_empty.png';
+  //==================lottie==============================
+  static const String emptySerachLottieImage = 'assets/lottie/Movie.json';
 }

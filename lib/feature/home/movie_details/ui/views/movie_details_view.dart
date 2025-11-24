@@ -40,7 +40,14 @@ class MovieDetailsView extends StatelessWidget {
           if (state is MovieDetailsLoadingState) {
             return Center(child: CircularProgressIndicator());
           } else if (state is MovieDetailsFailureState) {
-            return Center(child: Text(state.failure.failureMessage));
+            return Center(
+              child: Center(
+                child: Text(
+                  state.failure.failureMessage,
+                  style: AppStyles.w700S24White,
+                ),
+              ),
+            );
           } else if (state is MovieDetailsSuccessState) {
             var movieDetailsItem = state.movieDetailsResponseEntity.movie;
             return SingleChildScrollView(

@@ -48,6 +48,18 @@ import '../../feature/home/movie_details/ui/viewmodel/movie_details/movie_detail
     as _i426;
 import '../../feature/home/movie_details/ui/viewmodel/movie_suggestion/movie_suggestion_cubit.dart'
     as _i990;
+import '../../feature/home/searchtab/data/datasource/remote/search_movie_data_source.dart'
+    as _i600;
+import '../../feature/home/searchtab/data/datasource/remote/search_movie_data_source_impl.dart'
+    as _i209;
+import '../../feature/home/searchtab/data/repo/search_movie_repo_impl.dart'
+    as _i61;
+import '../../feature/home/searchtab/domian/repo/search_movie_repo.dart'
+    as _i793;
+import '../../feature/home/searchtab/domian/usecase/search_movie_use_case.dart'
+    as _i687;
+import '../../feature/home/searchtab/ui/view_model/search_movie_cubit.dart'
+    as _i756;
 import '../api/api_manger.dart' as _i339;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -58,6 +70,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.singleton<_i339.ApiManger>(() => _i339.ApiManger());
+    gh.factory<_i600.SearchMovieDataSource>(
+      () => _i209.SearchMovieDataSourceImpl(apiManger: gh<_i339.ApiManger>()),
+    );
     gh.factory<_i244.AuthDataSource>(
       () => _i490.AuthDataSourceImpl(apiManger: gh<_i339.ApiManger>()),
     );
@@ -67,6 +82,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i615.HomeTabRemoteDataSource>(
       () => _i403.HomeTabRemoteDataSourceImpl(apiManger: gh<_i339.ApiManger>()),
     );
+    gh.factory<_i793.SearchMovieRepo>(
+      () => _i61.SearchMovieRepoImpl(
+        searchMovieDataSource: gh<_i600.SearchMovieDataSource>(),
+      ),
+    );
     gh.factory<_i79.HomeTabRepo>(
       () => _i765.HomeTabRepoImpl(
         homeTabRemoteDataSource: gh<_i615.HomeTabRemoteDataSource>(),
@@ -75,6 +95,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i406.MovieDetailsRemoteDataSource>(
       () => _i636.MovieDetailsRemoteDataSourceImpl(
         apiManger: gh<_i339.ApiManger>(),
+      ),
+    );
+    gh.factory<_i687.SearchMovieUseCase>(
+      () => _i687.SearchMovieUseCase(
+        searchMovieRepo: gh<_i793.SearchMovieRepo>(),
       ),
     );
     gh.factory<_i563.GetListMovieUseCase>(
@@ -93,6 +118,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i700.ListMovieCubit>(
       () => _i700.ListMovieCubit(gh<_i563.GetListMovieUseCase>()),
+    );
+    gh.factory<_i756.SearchMovieCubit>(
+      () => _i756.SearchMovieCubit(gh<_i687.SearchMovieUseCase>()),
     );
     gh.factory<_i518.RegisterCubit>(
       () => _i518.RegisterCubit(

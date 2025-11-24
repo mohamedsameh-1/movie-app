@@ -44,4 +44,6 @@ abstract class AppStrings {
   static const String cast = 'Cast';
   static const String genres = 'Genres';
   static const String seeMore = 'See More';
+  //===============states===================
+  static const String notFound = 'not found';
 }
