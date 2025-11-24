@@ -110,6 +110,11 @@ class CustomMovieIsNotEmpty extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl:
                         listMovieResponseEntity.movies[index].mediumCoverImage,
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.broken_image,
+                      size: 40,
+                      color: AppColors.grey,
+                    ),
                     fit: BoxFit.cover,
                   ),
                   // child: Image.asset(

@@ -59,6 +59,11 @@ class MovieSuggestion extends StatelessWidget {
                               .movies[index]
                               .mediumCoverImage,
                           fit: BoxFit.fill,
+                          errorWidget: (context, url, error) => const Icon(
+                            Icons.broken_image,
+                            size: 40,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                       Positioned(

@@ -126,6 +126,13 @@ class HomeTabBody extends StatelessWidget {
                                                 .movies[index]
                                                 .mediumCoverImage,
                                             fit: BoxFit.cover,
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(
+                                                      Icons.broken_image,
+                                                      size: 40,
+                                                      color: AppColors.grey,
+                                                    ),
                                           ),
                                         ),
                                         Positioned(

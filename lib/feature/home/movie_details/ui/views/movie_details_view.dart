@@ -63,6 +63,11 @@ class MovieDetailsView extends StatelessWidget {
                         height: 400.h,
                         width: double.infinity,
                         fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => const Icon(
+                          Icons.broken_image,
+                          size: 40,
+                          color: AppColors.grey,
+                        ),
                       ),
 
                       ///gradient opacity
@@ -241,6 +246,8 @@ class ImageWithRaduisItem extends StatelessWidget {
           height: 167.h,
           width: double.infinity,
           fit: BoxFit.fill,
+          errorWidget: (context, url, error) =>
+              const Icon(Icons.broken_image, size: 40, color: AppColors.grey),
         ),
       ),
     );

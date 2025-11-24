@@ -37,6 +37,11 @@ class CustomCarouselSlider extends StatelessWidget {
                     height: 277.h,
                     fit: BoxFit.cover,
                     width: 184.w,
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.broken_image,
+                      size: 40,
+                      color: AppColors.grey,
+                    ),
                   ),
                 ),
               ),
