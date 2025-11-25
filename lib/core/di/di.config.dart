@@ -22,6 +22,7 @@ import '../../feature/auth/domain/usecase/log_in_use_case.dart' as _i73;
 import '../../feature/auth/domain/usecase/register_use_case.dart' as _i717;
 import '../../feature/auth/ui/viewmodel/login/log_in_cubit.dart' as _i1069;
 import '../../feature/auth/ui/viewmodel/register/register_cubit.dart' as _i518;
+import '../../feature/home/exploretab/view_model/browse_cubit.dart' as _i938;
 import '../../feature/home/hometab/data/datasource/remote/home_tab_remote_data_source.dart'
     as _i615;
 import '../../feature/home/hometab/data/datasource/remote/home_tab_remote_data_source_impl.dart'
@@ -121,6 +122,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i756.SearchMovieCubit>(
       () => _i756.SearchMovieCubit(gh<_i687.SearchMovieUseCase>()),
+    );
+    gh.factory<_i938.BrowseCubit>(
+      () => _i938.BrowseCubit(gh<_i563.GetListMovieUseCase>()),
     );
     gh.factory<_i518.RegisterCubit>(
       () => _i518.RegisterCubit(
