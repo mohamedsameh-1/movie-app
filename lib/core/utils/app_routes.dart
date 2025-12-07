@@ -5,4 +5,6 @@ abstract class AppRoutes {
   static const String forgetPassword = '/ForgetPasswordView';
   static const String homeViews = '/home_views';
   static const String movieDetailsViews = '/movie_details_views';
+  static const String editProfileViews = '/edit_profile_views';
+  static const String resetPassword = '/reset_password';
 }

@@ -9,6 +9,11 @@ abstract class AppStyles {
     fontSize: 24.sp,
     color: AppColors.white,
   );
+  static TextStyle w700S36White = GoogleFonts.inter(
+    fontWeight: FontWeight.w700,
+    fontSize: 36.sp,
+    color: AppColors.white,
+  );
   static TextStyle w400S20White = GoogleFonts.inter(
     fontWeight: FontWeight.w400,
     fontSize: 20.sp,

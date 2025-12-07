@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app/core/utils/app_assets.dart';
 import 'package:movie_app/core/utils/app_strings.dart';
 import 'package:movie_app/core/utils/shared_prefrence.dart';
 import 'package:movie_app/feature/auth/domain/usecase/log_in_use_case.dart';
@@ -37,17 +36,17 @@ class RegisterCubit extends Cubit<RegisterState> {
   bool isCnfirmPassVisibilityOff = true;
   //avatar
   int selectedAvatarIndex = 0;
-  final List<String> avatars = [
-    AppAssets.avatar1Image,
-    AppAssets.avatar2Image,
-    AppAssets.avatar3Image,
-    // AppAssets.avatar4Image,
-    AppAssets.avatar5Image,
-    AppAssets.avatar6Image,
-    // AppAssets.avatar7Image,
-    AppAssets.avatar8Image,
-    AppAssets.avatar9Image,
-  ];
+  // final List<String> avatars = [
+  //   AppAssets.avatar1Image,
+  //   AppAssets.avatar2Image,
+  //   AppAssets.avatar3Image,
+  //   // AppAssets.avatar4Image,
+  //   AppAssets.avatar5Image,
+  //   AppAssets.avatar6Image,
+  //   // AppAssets.avatar7Image,
+  //   AppAssets.avatar8Image,
+  //   AppAssets.avatar9Image,
+  // ];
 
   //handle logic
   void register() async {

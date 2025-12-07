@@ -1,3 +1,5 @@
+import 'package:movie_app/core/utils/app_assets.dart';
+
 abstract class AppStrings {
   //===================On-Boarding=====================
   static const String discoverMovies = 'Discover Movies';
@@ -46,4 +48,25 @@ abstract class AppStrings {
   static const String seeMore = 'See More';
   //===============states===================
   static const String notFound = 'not found';
+  //==============profile===================
+  static const String watchList = 'Watch List';
+  static const String history = 'History';
+  static const String editProfile = 'Edit Profile';
+  static const String exit = 'Exit';
+  static List<String> avatars = [
+    AppAssets.avatar1Image,
+    AppAssets.avatar2Image,
+    AppAssets.avatar3Image,
+    // AppAssets.avatar4Image,
+    AppAssets.avatar5Image,
+    AppAssets.avatar6Image,
+    // AppAssets.avatar7Image,
+    AppAssets.avatar8Image,
+    AppAssets.avatar9Image,
+  ];
+  static const String resetPassword = 'Reset Password';
+  static const String deleteAccount = 'Delete Account';
+  static const String updateData = 'Update Data';
+  static const String oldPassword = 'Enter Old Password';
+  static const String newPassword = 'Enter New Password';
 }

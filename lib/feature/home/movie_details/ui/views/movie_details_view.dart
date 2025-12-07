@@ -9,28 +9,91 @@ import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_elevate_btn.dart';
 import 'package:movie_app/feature/home/movie_details/ui/viewmodel/movie_details/movie_details_cubit.dart';
 import 'package:movie_app/feature/home/movie_details/ui/views/widgets/movie_suggestion.dart';
+import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_cubit.dart';
+import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_state.dart';
 import 'package:movie_app/feature/home/ui/views/widgets/custom_row_icon_with_text.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../viewmodel/movie_details/movie_details_state.dart';
 
-class MovieDetailsView extends StatelessWidget {
+class MovieDetailsView extends StatefulWidget {
   const MovieDetailsView({super.key});
+
+  @override
+  State<MovieDetailsView> createState() => _MovieDetailsViewState();
+}
+
+class _MovieDetailsViewState extends State<MovieDetailsView> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final addToHistoryCubit = getIt<AddToHistoryCubit>();
+  //   final movieDetailsCubit = getIt<MovieDetailsCubit>();
+
+  //   // Use addPostFrameCallback to safely access context
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     final movieId = ModalRoute.of(context)!.settings.arguments as String;
+
+  //     // Load movie details
+  //     movieDetailsCubit.getMovieDetailsById(movieId);
+
+  //     // Listen for successful load to add to history
+  //     movieDetailsCubit.stream.listen((state) {
+  //       if (state is MovieDetailsSuccessState) {
+  //         final movie = state.movieDetailsResponseEntity.movie;
+  //         addToHistoryCubit.addToHistory(
+  //           HistoryMovieEntity(
+  //             movieId: movie.id.toString(),
+  //             title: movie.title,
+  //             rating: movie.rating,
+  //             imageUrl: movie.largeCoverImage,
+  //           ),
+  //         );
+  //       }
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     MovieDetailsCubit movieDetailsCubit = getIt<MovieDetailsCubit>();
+    AddFavoriteCubit addFavoriteCubit = getIt<AddFavoriteCubit>();
+    // RemoveFavoriteMovieCubit removeFavoriteCubit =
+    //     getIt<RemoveFavoriteMovieCubit>();
     // MovieSuggestionCubit movieSuggestionCubit = getIt<MovieSuggestionCubit>();
     final movieIdArgument =
         ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        // foregroundColor: AppColors.white,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.bookmark_border_outlined),
+          BlocConsumer<AddFavoriteCubit, AddFavoriteState>(
+            bloc: addFavoriteCubit,
+            listener: (context, state) {},
+            builder: (context, state) {
+              return BlocBuilder(
+                bloc: movieDetailsCubit,
+                builder: (context, dState) {
+                  if (dState is MovieDetailsSuccessState) {
+                    final movie = dState.movieDetailsResponseEntity.movie;
+                    return IconButton(
+                      onPressed: () {
+                        addFavoriteCubit.addToFavorite(
+                          movie.id.toString(),
+                          movie.title,
+                          movie.rating,
+                          movie.url,
+                          movie.year.toString(),
+                        );
+                        print('added movie to fav ${movie.title}');
+                      },
+                      icon: Icon(Icons.bookmark_border_outlined),
+                    );
+                  }
+                  return Icon(Icons.bookmark_border_outlined);
+                },
+              );
+            },
           ),
         ],
       ),
@@ -57,7 +120,6 @@ class MovieDetailsView extends StatelessWidget {
                     alignment: AlignmentDirectional.center,
                     children: [
                       ///image
-                      ///will use cashed network image
                       CachedNetworkImage(
                         imageUrl: movieDetailsItem.largeCoverImage,
                         height: 400.h,

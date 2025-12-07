@@ -35,6 +35,21 @@ class ApiManger {
     );
   }
 
+  Future<Response> patchData(
+    String baseUrl, {
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+    Object? body,
+    Map<String, dynamic>? headers,
+  }) {
+    return dio.patch(
+      ApiConstants.baseUrl + endPoint,
+      queryParameters: queryParameters,
+      data: body,
+      options: Options(headers: headers, validateStatus: (status) => true),
+    );
+  }
+
   Future<Response> deleteData({
     required String endPoint,
     Map<String, dynamic>? queryParameters,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
+import 'package:movie_app/core/utils/app_strings.dart';
 import 'package:movie_app/feature/auth/ui/viewmodel/register/register_cubit.dart';
 import 'package:movie_app/feature/auth/ui/viewmodel/register/register_state.dart';
 
@@ -32,7 +33,7 @@ class CustomAvatarListViewBuilder extends StatelessWidget {
           return ListView.separated(
             separatorBuilder: (context, index) => SizedBox(width: 24.w),
             scrollDirection: Axis.horizontal,
-            itemCount: registerCubit.avatars.length,
+            itemCount: AppStrings.avatars.length,
             itemBuilder: (context, index) {
               final bool isSelectedAvatar =
                   registerCubit.selectedAvatarIndex == index;
@@ -51,7 +52,7 @@ class CustomAvatarListViewBuilder extends StatelessWidget {
                         ? Border.all(color: AppColors.yellow, width: 10.r)
                         : null,
                   ),
-                  child: Image.asset(registerCubit.avatars[index]),
+                  child: Image.asset(AppStrings.avatars[index]),
                 ),
               );
             },

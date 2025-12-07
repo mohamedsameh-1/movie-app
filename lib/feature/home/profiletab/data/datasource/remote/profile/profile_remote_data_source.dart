@@ -1,0 +1,9 @@
+import 'package:dartz/dartz.dart';
+import 'package:movie_app/core/utils/failure.dart';
+import 'package:movie_app/feature/home/profiletab/domain/entities/delete_account_entity.dart';
+import 'package:movie_app/feature/home/profiletab/domain/entities/get_profile_entity.dart';
+
+abstract class ProfileRemoteDataSource {
+  Future<Either<Failure, GetProfileResponseEntity>> getProfile();
+  Future<Either<Failure, DeleteAccountEntity>> deleteAccount();
+}
