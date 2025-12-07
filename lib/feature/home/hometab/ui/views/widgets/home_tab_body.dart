@@ -22,7 +22,12 @@ class HomeTabBody extends StatelessWidget {
         if (state is ListMovieLoadingState) {
           return CustomShimmerHomeTab();
         } else if (state is ListMovieFailureState) {
-          return Text(state.failure.failureMessage);
+          return Center(
+            child: Text(
+              state.failure.failureMessage,
+              style: AppStyles.w400S14White,
+            ),
+          );
         } else if (state is ListMovieSuccessState) {
           return SingleChildScrollView(
             child: Stack(

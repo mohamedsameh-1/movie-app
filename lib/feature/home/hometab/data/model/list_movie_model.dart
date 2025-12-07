@@ -30,6 +30,18 @@ class ListMovieResponseModel extends ListMovieResponseEntity {
           .toList(),
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'status': status,
+      'status_message': statusMessage,
+      'data': {
+        'movie_count': movieCount,
+        'limit': limit,
+        'page_number': pageNumber,
+        'movies': movies.map((e) => (e as MovieModel).toJson()).toList(),
+      },
+    };
+  }
 }
 
 class MovieModel extends MovieEntity {
@@ -91,5 +103,34 @@ class MovieModel extends MovieEntity {
       dateUploaded: json['date_uploaded'] ?? '',
       dateUploadedUnix: json['date_uploaded_unix'] ?? 0,
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'imdb_code': imdbCode,
+      'title': title,
+      'title_english': titleEnglish,
+      'title_long': titleLong,
+      'slug': slug,
+      'year': year,
+      'rating': rating,
+      'runtime': runtime,
+      'genres': genres,
+      'summary': summary,
+      'description_full': descriptionFull,
+      'synopsis': synopsis,
+      'yt_trailer_code': ytTrailerCode,
+      'language': language,
+      'mpa_rating': mpaRating,
+      'background_image': backgroundImage,
+      'background_image_original': backgroundImageOriginal,
+      'small_cover_image': smallCoverImage,
+      'medium_cover_image': mediumCoverImage,
+      'large_cover_image': largeCoverImage,
+      'state': state,
+      'date_uploaded': dateUploaded,
+      'date_uploaded_unix': dateUploadedUnix,
+    };
   }
 }

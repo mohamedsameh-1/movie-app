@@ -130,7 +130,7 @@ class EditProfileView extends StatelessWidget {
             //   },
             // ),
             SizedBox(height: 16.h),
-            CustomElevateBtn(text: AppStrings.updateData, onPressed: () {}),
+            // CustomElevateBtn(text: AppStrings.updateData, onPressed: () {}),
           ],
         ),
       ),

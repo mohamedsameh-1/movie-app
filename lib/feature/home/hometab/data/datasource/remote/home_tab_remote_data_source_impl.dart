@@ -5,6 +5,7 @@ import 'package:movie_app/core/api/api_constants.dart';
 import 'package:movie_app/core/api/api_manger.dart';
 import 'package:movie_app/core/api/end_points.dart';
 import 'package:movie_app/core/utils/failure.dart';
+import 'package:movie_app/core/utils/hive_cashing.dart';
 import 'package:movie_app/feature/home/hometab/data/datasource/remote/home_tab_remote_data_source.dart';
 import 'package:movie_app/feature/home/hometab/data/model/list_movie_model.dart';
 
@@ -24,10 +25,14 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
           ApiConstants.getmovieUrl,
           endPoint: EndPoints.listMovie,
         );
-        print(response.data);
+        // print(response.data);
         var listMovieResponse = ListMovieResponseModel.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! <= 300) {
-          //response success
+          ///response success
+          //caching success data
+          await HiveCashing.saveAvailableNow(listMovieResponse);
+          print('cached list movie success');
+          // return data
           return Right(listMovieResponse);
         } else {
           //server Erorr
@@ -36,12 +41,21 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
           );
         }
       } else {
-        //Network Error
-        return Left(
-          NetworkFailure(
-            failureMessage: 'No InterNet , check Your Connections',
-          ),
-        );
+        //   //Network Error
+        //   return Left(
+        //     NetworkFailure(
+        //       failureMessage: 'No InterNet , check Your Connections',
+        //     ),
+        //   );
+        // }
+        final cachedData = await HiveCashing.getAvailableNow();
+        if (cachedData != null) {
+          return Right(cachedData);
+        } else {
+          return Left(
+            NetworkFailure(failureMessage: 'No Internet & No Cached Data'),
+          );
+        }
       }
     } catch (e) {
       return Left(Failure(failureMessage: e.toString()));

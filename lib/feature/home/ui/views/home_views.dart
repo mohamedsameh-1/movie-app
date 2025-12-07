@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/feature/home/exploretab/ui/views/explore_tab_view.dart';
 import 'package:movie_app/feature/home/hometab/home_tab_view.dart';
-import 'package:movie_app/feature/home/profiletab/profile_tab_view.dart';
+import 'package:movie_app/feature/home/profiletab/ui/views/profile_tab_view.dart';
 import 'package:movie_app/feature/home/searchtab/ui/view/search_tab_view.dart';
 
 class HomeViews extends StatefulWidget {
