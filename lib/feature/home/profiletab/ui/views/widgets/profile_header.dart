@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,7 +65,10 @@ class ProfileHeader extends StatelessWidget {
                   spacing: 10.h,
                   children: [
                     Text('0', style: AppStyles.w700S36White),
-                    Text(AppStrings.watchList, style: AppStyles.w700S24White),
+                    Text(
+                      AppStrings.watchList.tr(),
+                      style: AppStyles.w700S24White,
+                    ),
                   ],
                 );
               } else {
@@ -75,7 +79,10 @@ class ProfileHeader extends StatelessWidget {
                       state.response.data.length.toString(),
                       style: AppStyles.w700S36White,
                     ),
-                    Text(AppStrings.watchList, style: AppStyles.w700S24White),
+                    Text(
+                      AppStrings.watchList.tr(),
+                      style: AppStyles.w700S24White,
+                    ),
                   ],
                 );
               }

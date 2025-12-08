@@ -10,107 +10,100 @@ class CustomShimmerHomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20.h),
-          // Container مكان النص الاول (اكبر شويه)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Shimmer.fromColors(
-              baseColor: AppColors.darkGreenGray,
-              highlightColor: AppColors.grey,
-              child: Container(
-                width: screenWidth - 32.w,
-                height: 28.h,
-                color: Colors.white,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 50.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Shimmer.fromColors(
+            baseColor: AppColors.darkGreenGray,
+            highlightColor: AppColors.grey,
+            child: Container(
+              width: screenWidth - 32.w,
+              height: 28.h,
+              color: Colors.white,
             ),
           ),
-          SizedBox(height: 20.h),
-          // Row فيها 3 صور بأكواد العرض بالكامل (اكبر شويه)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(3, (_) {
-                return Shimmer.fromColors(
-                  baseColor: AppColors.darkGreenGray,
-                  highlightColor: AppColors.grey,
-                  child: Container(
-                    width: (screenWidth - 48.w) / 3,
-                    height: 140.h,
-                    color: Colors.white,
-                  ),
-                );
-              }),
-            ),
-          ),
-          SizedBox(height: 20.h),
-          // Container مكان صورة watch now (اكبر شويه)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Shimmer.fromColors(
-              baseColor: AppColors.darkGreenGray,
-              highlightColor: AppColors.grey,
-              child: Container(
-                width: screenWidth - 32.w,
-                height: 160.h,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          SizedBox(height: 30.h),
-          // Row فيها نص + icon مع spaceBetween (اكبر شويه)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Shimmer.fromColors(
-                  baseColor: AppColors.darkGreenGray,
-                  highlightColor: AppColors.grey,
-                  child: Container(
-                    width: 140.w,
-                    height: 28.h,
-                    color: Colors.white,
-                  ),
+        ),
+        SizedBox(height: 50.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(3, (_) {
+              return Shimmer.fromColors(
+                baseColor: AppColors.darkGreenGray,
+                highlightColor: AppColors.grey,
+                child: Container(
+                  width: (screenWidth - 48.w) / 3,
+                  height: 140.h,
+                  color: Colors.white,
                 ),
-                Shimmer.fromColors(
-                  baseColor: AppColors.darkGreenGray,
-                  highlightColor: AppColors.grey,
-                  child: Container(
-                    width: 28.w,
-                    height: 28.h,
-                    color: Colors.white,
-                  ),
+              );
+            }),
+          ),
+        ),
+        SizedBox(height: 50.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Shimmer.fromColors(
+            baseColor: AppColors.darkGreenGray,
+            highlightColor: AppColors.grey,
+            child: Container(
+              width: screenWidth - 32.w,
+              height: 160.h,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        SizedBox(height: 50.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Shimmer.fromColors(
+                baseColor: AppColors.darkGreenGray,
+                highlightColor: AppColors.grey,
+                child: Container(
+                  width: 140.w,
+                  height: 28.h,
+                  color: Colors.white,
                 ),
-              ],
-            ),
+              ),
+              Shimmer.fromColors(
+                baseColor: AppColors.darkGreenGray,
+                highlightColor: AppColors.grey,
+                child: Container(
+                  width: 28.w,
+                  height: 28.h,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 20.h),
-          // Row فيها 3 صور اخرين بأكواد العرض بالكامل (اكبر شويه)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(3, (_) {
-                return Shimmer.fromColors(
-                  baseColor: AppColors.darkGreenGray,
-                  highlightColor: AppColors.grey,
-                  child: Container(
-                    width: (screenWidth - 48.w) / 3,
-                    height: 140.h,
-                    color: Colors.white,
-                  ),
-                );
-              }),
-            ),
+        ),
+        SizedBox(height: 50.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(3, (_) {
+              return Shimmer.fromColors(
+                baseColor: AppColors.darkGreenGray,
+                highlightColor: AppColors.grey,
+                child: Container(
+                  width: (screenWidth - 48.w) / 3,
+                  height: 140.h,
+                  color: Colors.white,
+                ),
+              );
+            }),
           ),
-          SizedBox(height: 30.h),
-        ],
-      ),
+        ),
+        SizedBox(height: 30.h),
+      ],
     );
   }
 }

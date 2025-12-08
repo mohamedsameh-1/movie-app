@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,63 +73,6 @@ class EditProfileView extends StatelessWidget {
               create: (context) => deleteAccountCubit,
               child: DeleteAccountItem(),
             ),
-
-            // BlocConsumer<DeleteAccountCubit, DeleteAccountState>(
-            //   listener: (context, state) {
-            //     if (state is DeleteAccountLoadingState) {
-            //       showDialog(
-            //         context: context,
-            //         builder: (context) {
-            //           return CustomMessageDialog(
-            //             message: 'Loading...',
-            //             type: MessageType.loading,
-            //           );
-            //         },
-            //       );
-            //     } else if (state is DeleteAccountFailureState) {
-            //       Navigator.pop(context);
-            //       showDialog(
-            //         context: context,
-            //         builder: (context) {
-            //           return CustomMessageDialog(
-            //             message: state.failure.failureMessage,
-            //             type: MessageType.error,
-            //           );
-            //         },
-            //       );
-            //     } else if (state is DeleteAccountSuccessState) {
-            //       Navigator.pop(context);
-            //       SharedPreference.remove(
-            //         AppStrings.tokenOfLoggedInOrCreatedAccount,
-            //       );
-            //       ScaffoldMessenger.of(context).showSnackBar(
-            //         SnackBar(
-            //           content: Text(
-            //             'Delete Account Successfully',
-            //             style: AppStyles.w400S16White,
-            //           ),
-            //           backgroundColor: AppColors.green,
-            //           duration: Duration(seconds: 2),
-            //         ),
-            //       );
-            //       Navigator.pushNamedAndRemoveUntil(
-            //         context,
-            //         AppRoutes.logIn,
-            //         (route) => false,
-            //       );
-            //     }
-            //   },
-            //   builder: (context, state) {
-            //     return CustomElevateBtn(
-            //       text: AppStrings.deleteAccount,
-            //       style: AppStyles.w400S20White,
-            //       onPressed: () {
-            //         deleteAccountCubit.deleteAccount();
-            //       },
-            //       backgroundColor: AppColors.red,
-            //     );
-            //   },
-            // ),
             SizedBox(height: 16.h),
             // CustomElevateBtn(text: AppStrings.updateData, onPressed: () {}),
           ],
@@ -151,7 +95,7 @@ class DeleteAccountItem extends StatelessWidget {
             context: context,
             builder: (context) {
               return CustomMessageDialog(
-                message: 'Loading...',
+                message: AppStrings.loading.tr(),
                 type: MessageType.loading,
               );
             },
@@ -173,7 +117,7 @@ class DeleteAccountItem extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'Delete Account Successfully',
+                AppStrings.deleteAccountSuccessfully.tr(),
                 style: AppStyles.w400S16White,
               ),
               backgroundColor: AppColors.green,
@@ -189,7 +133,7 @@ class DeleteAccountItem extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomElevateBtn(
-          text: AppStrings.deleteAccount,
+          text: AppStrings.deleteAccount.tr(),
           style: AppStyles.w400S20White,
           onPressed: () {
             context.read<DeleteAccountCubit>().deleteAccount();

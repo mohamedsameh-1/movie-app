@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,8 +30,8 @@ class RegisterView extends StatelessWidget {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (_) => const CustomMessageDialog(
-                message: 'Loading...',
+              builder: (_) => CustomMessageDialog(
+                message: AppStrings.loading.tr(),
                 type: MessageType.loading,
               ),
             );
@@ -58,7 +59,10 @@ class RegisterView extends StatelessWidget {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: Text(AppStrings.register, style: AppStyles.w400S16Yellow),
+            title: Text(
+              AppStrings.register.tr(),
+              style: AppStyles.w400S16Yellow,
+            ),
             centerTitle: true,
           ),
           body: SingleChildScrollView(
@@ -71,12 +75,12 @@ class RegisterView extends StatelessWidget {
                   children: [
                     CustomAvatarListViewBuilder(),
                     CustomTextField(
-                      hintText: AppStrings.name,
+                      hintText: AppStrings.name.tr(),
                       prefixIcon: Icon(Icons.person_3_sharp),
                       controller: registerCubit.nameController,
                     ),
                     CustomTextField(
-                      hintText: AppStrings.email,
+                      hintText: AppStrings.email.tr(),
                       prefixIcon: Icon(Icons.email),
                       controller: registerCubit.emailController,
                       validator: AppValidator.validateEmail,
@@ -86,7 +90,7 @@ class RegisterView extends StatelessWidget {
                         return CustomTextField(
                           controller: registerCubit.passwordController,
                           validator: AppValidator.validatePassword,
-                          hintText: AppStrings.password,
+                          hintText: AppStrings.password.tr(),
                           prefixIcon: Icon(Icons.lock),
                           obscureText: registerCubit.isPassVisibilityOff,
                           suffixIcon: IconButton(
@@ -111,7 +115,7 @@ class RegisterView extends StatelessWidget {
                                 registerCubit.passwordController!.text,
                                 value,
                               ),
-                          hintText: AppStrings.confirmPassword,
+                          hintText: AppStrings.confirmPassword.tr(),
                           prefixIcon: Icon(Icons.lock),
                           obscureText: registerCubit.isCnfirmPassVisibilityOff,
                           suffixIcon: IconButton(
@@ -130,27 +134,18 @@ class RegisterView extends StatelessWidget {
                     CustomTextField(
                       controller: registerCubit.phoneController,
                       validator: AppValidator.validatePhone,
-                      hintText: AppStrings.phoneNumber,
+                      hintText: AppStrings.phoneNumber.tr(),
                       prefixIcon: Icon(Icons.phone),
                     ),
                     CustomElevateBtn(
-                      text: AppStrings.createAccount,
+                      text: AppStrings.createAccount.tr(),
                       onPressed: () {
                         registerCubit.register();
-                        // print({
-                        //   "name": registerCubit.nameController!.text,
-                        //   "email": registerCubit.emailController!.text,
-                        //   "password": registerCubit.passwordController!.text,
-                        //   "confirmPassword":
-                        //       registerCubit.confirmPasswordtroller!.text,
-                        //   "phone": registerCubit.phoneController!.text,
-                        //   "avaterId": registerCubit.selectedAvatarIndex + 1,
-                        // });
                       },
                     ),
                     Text.rich(
                       TextSpan(
-                        text: AppStrings.alreadyHaveAccount,
+                        text: AppStrings.alreadyHaveAccount.tr(),
                         style: AppStyles.w400S14White,
                         children: [
                           WidgetSpan(
@@ -160,7 +155,7 @@ class RegisterView extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                AppStrings.login,
+                                AppStrings.login.tr(),
                                 style: AppStyles.w400S14Yellow,
                               ),
                             ),

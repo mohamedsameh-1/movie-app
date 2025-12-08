@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/app_strings.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_elevate_btn.dart';
 import 'package:movie_app/feature/home/profiletab/domain/entities/favorite_movie_entity.dart';
@@ -60,7 +62,7 @@ class CustomMovieFavItem extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           CustomElevateBtn(
-            text: 'Show Details',
+            text: AppStrings.showDetails.tr(),
             style: AppStyles.w400S16White,
             onPressed: () {
               Navigator.pushNamed(

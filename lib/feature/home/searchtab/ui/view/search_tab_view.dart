@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +37,7 @@ class SearchTabView extends StatelessWidget {
                 }
               },
               prefixIcon: Icon(Icons.search),
-              hintText: 'Search',
+              hintText: AppStrings.search.tr(),
             ),
             Expanded(
               child: BlocBuilder<SearchMovieCubit, SearchMovieState>(
@@ -56,7 +57,7 @@ class SearchTabView extends StatelessWidget {
                   } else if (state is SearchMovieSuccessState) {
                     if (state.listMovieResponseEntity.movies.isEmpty) {
                       return Text(
-                        AppStrings.notFound,
+                        AppStrings.notFound.tr(),
                         style: AppStyles.w400S20White,
                       );
                     }

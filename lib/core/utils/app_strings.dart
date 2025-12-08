@@ -2,57 +2,76 @@ import 'package:movie_app/core/utils/app_assets.dart';
 
 abstract class AppStrings {
   //===================On-Boarding=====================
-  static const String discoverMovies = 'Discover Movies';
-  static const String exploreAvastDescription =
-      'Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.';
-  static const String exploreAllGenres = 'Explore All Genres';
-  static const String discoverMoviesDescription =
-      'Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.';
-  static const String createWatchlists = 'Create Watchlists';
-  static const String saveMoviesDescription =
-      'Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.';
-  static const String startWatchingNow = 'Start Watching Now';
-  static const String next = 'Next';
-  static const String back = 'Back';
-  static const String finish = 'Finish';
+  static const String discoverMovies = 'discoverMovies';
+  static const String exploreAvastDescription = 'exploreAvastDescription';
+  static const String exploreAllGenres = 'exploreAllGenres';
+  static const String discoverMoviesDescription = 'discoverMoviesDescription';
+  static const String createWatchlists = 'createWatchlists';
+  static const String saveMoviesDescription = 'saveMoviesDescription';
+  static const String startWatchingNow = 'startWatchingNow';
+  static const String next = 'next';
+  static const String back = 'back';
+  static const String finish = 'finish';
   static const String isFirstOpen = 'isFirstOpen';
+
   //==================LogIn=============================
-  static const String email = 'Email';
-  static const String password = 'Password';
-  static const String forgetPassword = 'Forget Password ?';
-  static const String login = 'Login';
-  static const String dontHaveAccount = 'Don\'t Have Account ? ';
-  static const String createOne = 'Create One';
-  static const String loginWithGoogle = 'Login With Google';
-  static const String oR = 'OR';
-  static const String en = 'EN';
-  static const String ar = 'عربي';
+  static const String email = 'email';
+  static const String password = 'password';
+  static const String forgetPassword = 'forgetPassword';
+  static const String login = 'login';
+  static const String dontHaveAccount = 'dontHaveAccount';
+  static const String createOne = 'createOne';
+  static const String loginWithGoogle = 'loginWithGoogle';
+  static const String oR = 'oR';
+  static const String en = 'en';
+  static const String ar = 'ar';
+  static const String loading = 'loading';
+  static const String successLogin = "SuccessLogin";
+
   //==================Register=============================
-  static const String register = 'Register';
-  static const String name = 'Name';
-  static const String confirmPassword = 'Confirm Password';
-  static const String phoneNumber = 'Phone Number';
-  static const String createAccount = 'Create Account';
-  static const String alreadyHaveAccount = 'Already Have Account ?';
-  static const String verifyEmail = 'Verify Email';
-  static const String forgetPasswordAppBar = 'Forget Password';
-  // static const String loggedInSuccessfuly = 'Logged In successfully';
+  static const String register = 'register';
+  static const String name = 'name';
+  static const String confirmPassword = 'confirmPassword';
+  static const String phoneNumber = 'phoneNumber';
+  static const String createAccount = 'createAccount';
+  static const String alreadyHaveAccount = 'alreadyHaveAccount';
+  static const String verifyEmail = 'verifyEmail';
+  static const String forgetPasswordAppBar = 'forgetPasswordAppBar';
   static const String tokenOfLoggedInOrCreatedAccount =
-      'tokenLoggedInOrCreatedAccount';
+      'tokenOfLoggedInOrCreatedAccount';
+  static const String successRegister = "successRegister";
+
+  //==================HomeBodyTab=============================
+  static const String category = 'category';
   //==================MovieDetails=============================
-  static const String screenShots = 'Screen Shots';
-  static const String similar = 'Similar';
-  static const String summary = 'Summary';
-  static const String cast = 'Cast';
-  static const String genres = 'Genres';
-  static const String seeMore = 'See More';
+  static const String screenShots = 'screenShots';
+  static const String similar = 'similar';
+  static const String summary = 'summary';
+  static const String cast = 'cast';
+  static const String genres = 'genres';
+  static const String seeMore = 'seeMore';
+  static const String readLess = 'ReadLess';
+  static const String readMore = 'ReadMore';
+
   //===============states===================
-  static const String notFound = 'not found';
+  static const String notFound = 'notFound';
+
+  //===============search===================
+  static const String search = 'Search';
+
   //==============profile===================
-  static const String watchList = 'Watch List';
-  static const String history = 'History';
-  static const String editProfile = 'Edit Profile';
-  static const String exit = 'Exit';
+  static const String watchList = 'watchList';
+  static const String history = 'history';
+  static const String editProfile = 'editProfile';
+  static const String exit = 'exit';
+  static const String resetPassword = 'resetPassword';
+  static const String deleteAccount = 'deleteAccount';
+  static const String updateData = 'updateData';
+  static const String oldPassword = 'oldPassword';
+  static const String newPassword = 'newPassword';
+  static const String logOutSuccess = 'LogOutSuccessfully';
+  static const String showDetails = 'ShowDetails';
+  static const String deleteAccountSuccessfully = 'DeleteAccountSuccessfully';
   static List<String> avatars = [
     AppAssets.avatar1Image,
     AppAssets.avatar2Image,
@@ -64,9 +83,4 @@ abstract class AppStrings {
     AppAssets.avatar8Image,
     AppAssets.avatar9Image,
   ];
-  static const String resetPassword = 'Reset Password';
-  static const String deleteAccount = 'Delete Account';
-  static const String updateData = 'Update Data';
-  static const String oldPassword = 'Enter Old Password';
-  static const String newPassword = 'Enter New Password';
 }

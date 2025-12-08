@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,10 @@ class ResetPasswordView extends StatelessWidget {
     ResetPasswordCubit resetPasswordCubit = getIt<ResetPasswordCubit>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.resetPassword, style: AppStyles.w400S16White),
+        title: Text(
+          AppStrings.resetPassword.tr(),
+          style: AppStyles.w400S16White,
+        ),
         centerTitle: true,
       ),
       body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
@@ -28,7 +32,7 @@ class ResetPasswordView extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) => CustomMessageDialog(
-                message: 'Loading...',
+                message: AppStrings.loading.tr(),
                 type: MessageType.loading,
               ),
             );
@@ -68,7 +72,7 @@ class ResetPasswordView extends StatelessWidget {
                   SizedBox(height: 30.h),
                   CustomTextField(
                     prefixIcon: Icon(Icons.lock, color: AppColors.grey),
-                    hintText: AppStrings.oldPassword,
+                    hintText: AppStrings.oldPassword.tr(),
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: resetPasswordCubit.isOldPasswordVisibilityOff,
                     controller: resetPasswordCubit.oldPassController,
@@ -87,7 +91,7 @@ class ResetPasswordView extends StatelessWidget {
                   SizedBox(height: 20.h),
                   CustomTextField(
                     prefixIcon: Icon(Icons.lock, color: AppColors.grey),
-                    hintText: AppStrings.newPassword,
+                    hintText: AppStrings.newPassword.tr(),
                     keyboardType: TextInputType.visiblePassword,
                     controller: resetPasswordCubit.newPassController,
                     obscureText: resetPasswordCubit.isNewPasswordVisibilityOff,
@@ -105,7 +109,7 @@ class ResetPasswordView extends StatelessWidget {
                   ),
                   SizedBox(height: 70.h),
                   CustomElevateBtn(
-                    text: AppStrings.resetPassword,
+                    text: AppStrings.resetPassword.tr(),
                     onPressed: () {
                       resetPasswordCubit.resetPassword();
                     },

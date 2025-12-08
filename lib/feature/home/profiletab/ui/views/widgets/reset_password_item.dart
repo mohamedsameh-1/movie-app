@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/app_strings.dart';
@@ -14,7 +15,10 @@ class ResetPasswordItem extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, AppRoutes.resetPassword);
         },
-        child: Text(AppStrings.resetPassword, style: AppStyles.w400S20White),
+        child: Text(
+          AppStrings.resetPassword.tr(),
+          style: AppStyles.w400S20White,
+        ),
       ),
     );
   }

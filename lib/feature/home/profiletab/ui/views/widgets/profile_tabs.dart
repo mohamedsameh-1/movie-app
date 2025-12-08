@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,7 @@ class ProfileTabs extends StatelessWidget {
                 Tab(
                   icon: Icon(Icons.list, color: AppColors.yellow),
                   child: Text(
-                    AppStrings.watchList,
+                    AppStrings.watchList.tr(),
                     style: AppStyles.w700S20Wite,
                   ),
                 ),

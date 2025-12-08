@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,8 +31,8 @@ class LogInViews extends StatelessWidget {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (_) => const CustomMessageDialog(
-                message: 'Loading...',
+              builder: (_) => CustomMessageDialog(
+                message: AppStrings.loading.tr(),
                 type: MessageType.loading,
               ),
             );
@@ -79,7 +80,7 @@ class LogInViews extends StatelessWidget {
                     CustomTextField(
                       controller: logInCubit.emailController,
                       validator: AppValidator.validateEmail,
-                      hintText: AppStrings.login,
+                      hintText: AppStrings.email.tr(),
                       prefixIcon: Icon(Icons.email),
                     ),
                     SizedBox(height: 22.h),
@@ -89,7 +90,7 @@ class LogInViews extends StatelessWidget {
                         return CustomTextField(
                           controller: logInCubit.passwordController,
                           validator: AppValidator.validatePassword,
-                          hintText: AppStrings.password,
+                          hintText: AppStrings.password.tr(),
                           prefixIcon: Icon(Icons.lock),
                           suffixIcon: IconButton(
                             onPressed: () {
@@ -115,7 +116,7 @@ class LogInViews extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          AppStrings.forgetPassword,
+                          AppStrings.forgetPassword.tr(),
                           style: AppStyles.w400S14Yellow,
                         ),
                       ),
@@ -123,7 +124,7 @@ class LogInViews extends StatelessWidget {
                     SizedBox(height: 30.h),
                     //logIn btn
                     CustomElevateBtn(
-                      text: AppStrings.login,
+                      text: AppStrings.login.tr(),
                       onPressed: () {
                         logInCubit.login();
                       },
@@ -132,7 +133,7 @@ class LogInViews extends StatelessWidget {
                     //if don't have account
                     Text.rich(
                       TextSpan(
-                        text: AppStrings.dontHaveAccount,
+                        text: AppStrings.dontHaveAccount.tr(),
                         style: AppStyles.w400S14White,
                         children: [
                           WidgetSpan(
@@ -145,7 +146,7 @@ class LogInViews extends StatelessWidget {
                                 );
                               },
                               child: Text(
-                                AppStrings.createOne,
+                                AppStrings.createOne.tr(),
                                 style: AppStyles.w400S14Yellow,
                               ),
                             ),
@@ -164,7 +165,10 @@ class LogInViews extends StatelessWidget {
                             endIndent: 10.w,
                           ),
                         ),
-                        Text(AppStrings.oR, style: AppStyles.w400S14Yellow),
+                        Text(
+                          AppStrings.oR.tr(),
+                          style: AppStyles.w400S14Yellow,
+                        ),
                         Expanded(
                           child: Divider(
                             color: AppColors.yellow,

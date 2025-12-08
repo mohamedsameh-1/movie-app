@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,34 +33,6 @@ class HomeTabBody extends StatelessWidget {
           return SingleChildScrollView(
             child: Stack(
               children: [
-                //will be change to cached network image
-                // SizedBox(
-                //   height: 645.h,
-                //   child: ListView.builder(
-                //     itemCount: state.listMovieResponseEntity.movies.length,
-                //     itemBuilder: (context, index) => CachedNetworkImage(
-                //       imageUrl: state
-                //           .listMovieResponseEntity
-                //           .movies[index]
-                //           .largeCoverImage,
-                //     ),
-                //   ),
-                // ),
-                // Positioned.fill(
-                //   child: Container(
-                //     decoration: BoxDecoration(
-                //       gradient: LinearGradient(
-                //         colors: [
-                //           AppColors.black0Percent,
-                //           AppColors.black60Percent,
-                //           AppColors.black,
-                //         ],
-                //         begin: Alignment.topCenter,
-                //         end: Alignment.bottomCenter,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 SafeArea(
                   child: Column(
                     children: [
@@ -84,16 +57,19 @@ class HomeTabBody extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Text('Category', style: AppStyles.w400S20White),
-                                Spacer(),
                                 Text(
-                                  AppStrings.seeMore,
-                                  style: AppStyles.w400S16Yellow,
+                                  AppStrings.category.tr(),
+                                  style: AppStyles.w400S20White,
                                 ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_outlined,
-                                  color: AppColors.yellow,
-                                ),
+                                // Spacer(),
+                                // Text(
+                                //   AppStrings.seeMore,
+                                //   style: AppStyles.w400S16Yellow,
+                                // ),
+                                // Icon(
+                                //   Icons.keyboard_arrow_right_outlined,
+                                //   color: AppColors.yellow,
+                                // ),
                               ],
                             ),
                             SizedBox(height: 8.h),

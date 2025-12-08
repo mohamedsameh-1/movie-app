@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,44 +18,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../viewmodel/movie_details/movie_details_state.dart';
 
-class MovieDetailsView extends StatefulWidget {
+class MovieDetailsView extends StatelessWidget {
   const MovieDetailsView({super.key});
 
-  @override
-  State<MovieDetailsView> createState() => _MovieDetailsViewState();
-}
-
-class _MovieDetailsViewState extends State<MovieDetailsView> {
   // @override
-  // void initState() {
-  //   super.initState();
-  //   final addToHistoryCubit = getIt<AddToHistoryCubit>();
-  //   final movieDetailsCubit = getIt<MovieDetailsCubit>();
-
-  //   // Use addPostFrameCallback to safely access context
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     final movieId = ModalRoute.of(context)!.settings.arguments as String;
-
-  //     // Load movie details
-  //     movieDetailsCubit.getMovieDetailsById(movieId);
-
-  //     // Listen for successful load to add to history
-  //     movieDetailsCubit.stream.listen((state) {
-  //       if (state is MovieDetailsSuccessState) {
-  //         final movie = state.movieDetailsResponseEntity.movie;
-  //         addToHistoryCubit.addToHistory(
-  //           HistoryMovieEntity(
-  //             movieId: movie.id.toString(),
-  //             title: movie.title,
-  //             rating: movie.rating,
-  //             imageUrl: movie.largeCoverImage,
-  //           ),
-  //         );
-  //       }
-  //     });
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     MovieDetailsCubit movieDetailsCubit = getIt<MovieDetailsCubit>();
@@ -179,18 +146,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                           text: 'Watch',
                           onPressed: () async {
                             await launchUrl(Uri.parse(movieDetailsItem.url));
-                            // final String url = movieDetailsItem
-                            //     .url; // الرابط اللي جالك من ال API
-                            // final Uri uri = Uri.parse(url);
-                            // if (await canLaunchUrl(uri)) {
-                            //   await launchUrl(
-                            //     uri,
-                            //     mode: LaunchMode
-                            //         .externalApplication, // يفتح المتصفح
-                            //   );
-                            // } else {
-                            //   print("Could not launch $url");
-                            // }
                           },
                           backgroundColor: AppColors.red,
                           style: AppStyles.w400S20White,
@@ -217,7 +172,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          AppStrings.screenShots,
+                          AppStrings.screenShots.tr(),
                           style: AppStyles.w700S24White,
                         ),
                         SizedBox(height: 8.h),
@@ -233,21 +188,36 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
 
                         /// summary text
                         SizedBox(height: 16.h),
-                        Text(AppStrings.summary, style: AppStyles.w700S24White),
+                        Text(
+                          AppStrings.summary.tr(),
+                          style: AppStyles.w700S24White,
+                        ),
                         SizedBox(height: 8.h),
                         ReadMoreText(
                           movieDetailsItem.descriptionIntro,
                           style: AppStyles.w400S16White,
                           trimMode: TrimMode.Line,
                           trimLines: 7,
-                          trimExpandedText: ' Read Less',
-                          trimCollapsedText: ' Read More',
+                          trimExpandedText: AppStrings.readLess.tr(),
+                          trimCollapsedText: AppStrings.readMore.tr(),
                           moreStyle: AppStyles.w600S20Yellow,
                           lessStyle: AppStyles.w600S20Yellow,
                         ),
+
+                        /// similar
                         SizedBox(height: 16.h),
-                        Text(AppStrings.genres, style: AppStyles.w700S24White),
-                        SizedBox(height: 8.h),
+                        Text(
+                          AppStrings.similar.tr(),
+                          style: AppStyles.w700S24White,
+                        ),
+                        MovieSuggestion(),
+
+                        SizedBox(height: 16.h),
+                        Text(
+                          AppStrings.genres.tr(),
+                          style: AppStyles.w700S24White,
+                        ),
+                        SizedBox(height: 16.h),
 
                         /// genres
                         Wrap(
@@ -272,11 +242,6 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
                               )
                               .toList(),
                         ),
-
-                        /// similar
-                        Text(AppStrings.similar, style: AppStyles.w700S24White),
-                        SizedBox(height: 8.h),
-                        MovieSuggestion(),
                         SizedBox(height: 30.h),
                       ],
                     ),

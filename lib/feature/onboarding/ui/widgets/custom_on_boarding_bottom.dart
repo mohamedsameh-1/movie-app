@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
@@ -31,12 +32,6 @@ class CustomOnboardingBottom extends StatelessWidget {
       right: 0,
       child: Container(
         padding: EdgeInsets.all(16.r),
-        // width: 398.w,
-        // height: index == 0
-        //     ? 260.h
-        //     : index == 3
-        //     ? 230.h
-        //     : 321.h,
         decoration: BoxDecoration(
           color: AppColors.black,
           borderRadius: BorderRadius.only(
@@ -66,12 +61,6 @@ class CustomOnboardingBottom extends StatelessWidget {
                     curve: Curves.easeIn,
                   );
                 }
-                // index == 3
-                //     ? Navigator.pushNamed(context, AppRoutes.logIn)
-                //     : controller.nextPage(
-                //         duration: Duration(milliseconds: 300),
-                //         curve: Curves.easeIn,
-                //       );
               },
               child: Container(
                 height: 55,
@@ -82,7 +71,7 @@ class CustomOnboardingBottom extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    index == 3 ? AppStrings.finish : AppStrings.next,
+                    index == 3 ? AppStrings.finish.tr() : AppStrings.next.tr(),
                     style: AppStyles.w600S20Black,
                   ),
                 ),
@@ -108,7 +97,7 @@ class CustomOnboardingBottom extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          AppStrings.back,
+                          AppStrings.back.tr(),
                           style: AppStyles.w600S20Yellow,
                         ),
                       ),

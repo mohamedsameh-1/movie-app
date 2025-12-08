@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_assets.dart';
@@ -14,7 +15,7 @@ class ForgetPasswordView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.forgetPasswordAppBar,
+          AppStrings.forgetPasswordAppBar.tr(),
           style: AppStyles.w400S16Yellow,
         ),
         centerTitle: true,
@@ -30,11 +31,14 @@ class ForgetPasswordView extends StatelessWidget {
                 width: 430.w,
               ),
               CustomTextField(
-                hintText: AppStrings.email,
+                hintText: AppStrings.email.tr(),
                 prefixIcon: Icon(Icons.email),
               ),
               SizedBox(height: 24.h),
-              CustomElevateBtn(text: AppStrings.verifyEmail, onPressed: () {}),
+              CustomElevateBtn(
+                text: AppStrings.verifyEmail.tr(),
+                onPressed: () {},
+              ),
             ],
           ),
         ),

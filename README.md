@@ -1,16 +1,47 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+A Flutter movie app with clean architecture, Cubit & Provider, Dio API, Hive caching, SharedPreferences, and localization (Arabic & English).
+
+---
+
+## Features
+
+- Clean architecture
+- Cubit & Provider for state management
+- Dio API integration
+- Hive & SharedPreferences for caching
+- Localization support (Arabic & English)
+- Offline mode for previously fetched movies
+
+---
+
+## Tech Stack
+
+- Flutter & Dart
+- Dio
+- Hive
+- SharedPreferences
+- easy_localization
+- flutter_bloc (Cubit) & provider
+
+---
+
+## Screenshots
+
+Home Screen:  
+![Home Screen](assets/screenshots/home.png)
+
+Movie Details Screen:  
+![Details Screen](assets/screenshots/details.png)
+
+Demo GIF (optional):  
+![App Demo](assets/screenshots/demo.gif)
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone the repository:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/mohamedsameh-1/movie-app.git

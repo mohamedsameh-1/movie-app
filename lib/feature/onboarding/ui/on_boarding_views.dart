@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/app_assets.dart';
 import 'package:movie_app/core/utils/app_strings.dart';
@@ -17,28 +18,28 @@ class OnBoardingViews extends StatelessWidget {
             controller: controller,
             image: AppAssets.onBoarding2,
             title: AppStrings.discoverMovies,
-            description: AppStrings.exploreAvastDescription,
+            description: AppStrings.exploreAvastDescription.tr(),
             index: 0,
           ),
           PageViewItem(
             controller: controller,
             image: AppAssets.onBoarding3,
             title: AppStrings.exploreAllGenres,
-            description: AppStrings.discoverMoviesDescription,
+            description: AppStrings.discoverMoviesDescription.tr(),
             index: 1,
           ),
           PageViewItem(
             controller: controller,
             image: AppAssets.onBoarding1,
             title: AppStrings.createWatchlists,
-            description: AppStrings.saveMoviesDescription,
+            description: AppStrings.saveMoviesDescription.tr(),
             index: 2,
           ),
           PageViewItem(
             controller: controller,
             image: AppAssets.onBoardingLast,
             title: AppStrings.startWatchingNow,
-            description: AppStrings.discoverMovies,
+            description: AppStrings.discoverMovies.tr(),
             index: 3,
           ),
         ],

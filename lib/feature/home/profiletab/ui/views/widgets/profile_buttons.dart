@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class ProfileButtons extends StatelessWidget {
             return Expanded(
               flex: 2,
               child: CustomElevateBtn(
-                text: AppStrings.editProfile,
+                text: AppStrings.editProfile.tr(),
                 onPressed: () {
                   if (state is GetProfileSuccessState) {
                     final prfileData = state.getProfileResponseEntity.data;
@@ -57,7 +58,7 @@ class ProfileButtons extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'Log Out Successfully',
+                      AppStrings.logOutSuccess.tr(),
                       style: AppStyles.w400S16White,
                     ),
                     backgroundColor: AppColors.green,
@@ -71,7 +72,7 @@ class ProfileButtons extends StatelessWidget {
             builder: (context, state) {
               return Expanded(
                 child: CustomElevateBtn(
-                  text: AppStrings.exit,
+                  text: AppStrings.exit.tr(),
                   onPressed: () {
                     context.read<LogOutCubit>().logOut();
                   },
