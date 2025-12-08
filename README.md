@@ -28,14 +28,13 @@ A Flutter movie app with clean architecture, Cubit & Provider, Dio API, Hive cac
 
 ## Screenshots
 
-Home Screen:  
-![Home Screen](assets/screenshots/home.png)
+Home Tab:  
+![Home tab](assets/screenshots/home_tab.png)
 
-Movie Details Screen:  
-![Details Screen](assets/screenshots/details.png)
+search tab :  
+![search tab in empty](assets/screenshots/empty_search_tab.png)
+![search tab in data](assets/screenshots/data_search_tab.png.png)
 
-Demo GIF (optional):  
-![App Demo](assets/screenshots/demo.gif)
 
 ---
 
