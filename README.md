@@ -33,7 +33,7 @@ Home Tab:
 
 search tab :  
 ![search tab in empty](assets/screenshots/empty_search_tab.png)
-![search tab in data](assets/screenshots/data_search_tab.png.png)
+![search tab in data](assets/screenshots/data_search_tab.png)
 
 
 ---

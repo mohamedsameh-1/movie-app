@@ -6,7 +6,7 @@ import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/app_strings.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_elevate_btn.dart';
-import 'package:movie_app/feature/home/profiletab/domain/entities/favorite_movie_entity.dart';
+import 'package:movie_app/feature/home/profiletab/domain/entities/add_favorite_movie_entity.dart';
 
 class CustomMovieFavItem extends StatelessWidget {
   const CustomMovieFavItem({super.key, required this.movieFavData});

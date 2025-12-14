@@ -130,3 +130,133 @@ class CustomMovieIProfilsNotEmpty extends StatelessWidget {
     );
   }
 }
+
+// import 'package:easy_localization/easy_localization.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:lottie/lottie.dart';
+// import 'package:movie_app/core/utils/app_assets.dart';
+// import 'package:movie_app/core/utils/app_colors.dart';
+// import 'package:movie_app/core/utils/app_routes.dart';
+// import 'package:movie_app/core/utils/app_strings.dart';
+// import 'package:movie_app/core/utils/app_styles.dart';
+// import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite/favorite_cubit.dart';
+// import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite/favorite_state.dart';
+// import 'package:movie_app/feature/home/profiletab/ui/views/widgets/custom_movie_fav_item.dart';
+
+// class ProfileTabs extends StatelessWidget {
+//   const ProfileTabs({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final favoriteCubit = context.read<FavoriteCubit>();
+
+//     return DefaultTabController(
+//       length: 1,
+//       child: Expanded(
+//         child: Column(
+//           children: [
+//             TabBar(
+//               dividerColor: AppColors.transparent,
+//               indicatorColor: AppColors.yellow,
+//               labelColor: AppColors.yellow,
+//               unselectedLabelColor: AppColors.white,
+//               tabs: [
+//                 Tab(
+//                   icon: Icon(Icons.bookmark, color: AppColors.yellow),
+//                   child: Text(
+//                     AppStrings.watchList.tr(),
+//                     style: AppStyles.w700S20Wite,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             Expanded(
+//               child: TabBarView(
+//                 children: [
+//                   CustomMovieIProfilsNotEmpty(favoriteCubit: favoriteCubit),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class CustomMovieProfileIsEmpty extends StatelessWidget {
+//   const CustomMovieProfileIsEmpty({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Lottie.asset(
+//         AppAssets.emptySerachLottieImage,
+//         height: 124.h,
+//         width: 124.w,
+//       ),
+//     );
+//   }
+// }
+
+// class CustomMovieIProfilsNotEmpty extends StatelessWidget {
+//   final FavoriteCubit favoriteCubit;
+
+//   const CustomMovieIProfilsNotEmpty({super.key, required this.favoriteCubit});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocBuilder<FavoriteCubit, FavouriteState>(
+//       bloc: favoriteCubit..loadFavorites(),
+//       builder: (context, state) {
+//         if (state is FavouriteLoading) {
+//           return const Center(child: CircularProgressIndicator());
+//         }
+
+//         if (state is FavouriteError) {
+//           return Center(
+//             child: Text(
+//               state.failure.failureMessage,
+//               style: AppStyles.w400S14White,
+//             ),
+//           );
+//         }
+
+//         if (state is FavouriteLoaded) {
+//           final favMovies = state.getFavMovie;
+
+//           if (favMovies.isEmpty) {
+//             return const CustomMovieProfileIsEmpty();
+//           }
+
+//           return GridView.builder(
+//             itemCount: favMovies.length,
+//             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//               crossAxisCount: 2,
+//               crossAxisSpacing: 16.w,
+//               mainAxisSpacing: 8.h,
+//             ),
+//             itemBuilder: (context, index) {
+//               final movieFavData = favMovies[index];
+
+//               return GestureDetector(
+//                 onTap: () {
+//                   Navigator.pushNamed(
+//                     context,
+//                     AppRoutes.movieDetailsViews,
+//                     arguments: movieFavData.movieId,
+//                   );
+//                 },
+//                 child: CustomMovieFavItem(movieFavData: movieFavData),
+//               );
+//             },
+//           );
+//         }
+
+//         return Center(child: Text('Oops', style: AppStyles.w400S14White));
+//       },
+//     );
+//   }
+// }

@@ -1,5 +1,5 @@
 import 'package:movie_app/core/utils/failure.dart';
-import 'package:movie_app/feature/home/profiletab/domain/entities/favorite_movie_entity.dart';
+import 'package:movie_app/feature/home/profiletab/domain/entities/add_favorite_movie_entity.dart';
 
 abstract class GetFavoriteMoviesState {}
 

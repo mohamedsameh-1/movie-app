@@ -11,7 +11,7 @@ class RemoveFavoriteMovieCubit extends Cubit<RemoveFavoriteState> {
 
   void removeFavoriteMovieId(String movieId) async {
     emit(RemoveFavoriteLoading());
-    var either = await removeFavoriteUseCase.call(movieId);
+    var either = await removeFavoriteUseCase.excute(movieId);
     either.fold(
       (error) => emit(RemoveFavoriteError(failure: error)),
       (success) => emit(RemoveFavoriteSuccess(removeFavoriteEntity: success)),

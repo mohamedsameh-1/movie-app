@@ -1,48 +1,86 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/api/api_manger.dart';
-import 'package:movie_app/core/api/end_points.dart';
-import 'package:movie_app/feature/home/movie_details/domain/entity/movie_details_entity.dart';
-import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite/favorite_state.dart';
+import 'package:injectable/injectable.dart';
+import 'package:movie_app/feature/home/profiletab/domain/entities/add_favorite_movie_entity.dart';
+import 'package:movie_app/feature/home/profiletab/domain/usecase/add_favorite_movie_use_case.dart';
+import 'package:movie_app/feature/home/profiletab/domain/usecase/get_all_favorite_use_case.dart';
+import 'package:movie_app/feature/home/profiletab/domain/usecase/remove_movie_use_case.dart';
+import 'favorite_state.dart';
 
-class FavouriteCubit extends Cubit<FavouriteState> {
-  FavouriteCubit(this.apiManger) : super(FavouriteInitial());
+@injectable
+class FavoriteCubit extends Cubit<FavouriteState> {
+  FavoriteCubit(
+    this.addFavoriteUseCase,
+    this.removeFavoriteUseCase,
+    this.getFavoriteMoviesUseCase,
+  ) : super(FavouriteInitial());
 
-  bool isFavourite = false;
+  final AddFavoriteUseCase addFavoriteUseCase;
+  final RemoveFavoriteUseCase removeFavoriteUseCase;
+  final GetFavoriteMoviesUseCase getFavoriteMoviesUseCase;
 
-  Future<void> toggleFavourite(MovieDetailsEntity movie) async {
+  List<FavoriteMovieEntity> favorites = [];
+
+  // ============================
+  //      GET ALL FAVORITES
+  // ============================
+  Future<void> loadFavorites() async {
     emit(FavouriteLoading());
-    try {
-      if (!isFavourite) {
-        await addMovieToFav(movie);
-        isFavourite = true;
-        emit(FavouriteAdded());
-      } else {
-        await removeMovieFromFav(movie.id.toString());
-        isFavourite = false;
-        emit(FavouriteRemoved());
-      }
-    } catch (e) {
-      emit(FavouriteError(e.toString()));
+
+    final response = await getFavoriteMoviesUseCase.excute();
+
+    response.fold((failure) => emit(FavouriteError(failure: failure)), (
+      result,
+    ) {
+      favorites = result.data;
+      emit(FavouriteLoaded(getFavMovie: favorites));
+    });
+  }
+
+  // ============================
+  //     TOGGLE FAVORITE
+  // ============================
+  Future<void> toggleFavorite({
+    required String movieId,
+    required String name,
+    required double rating,
+    required String imageURL,
+    required String year,
+  }) async {
+    final bool isFav = favorites.any((m) => m.movieId == movieId);
+
+    // ----------------- REMOVE -----------------
+    if (isFav) {
+      final response = await removeFavoriteUseCase.excute(movieId);
+
+      response.fold((failure) => emit(FavouriteError(failure: failure)), (_) {
+        favorites.removeWhere((m) => m.movieId == movieId);
+        emit(FavouriteLoaded(getFavMovie: List.from(favorites)));
+      });
+
+      return;
     }
+
+    // ----------------- ADD -----------------
+    final response = await addFavoriteUseCase.execute(
+      movieId,
+      name,
+      rating,
+      imageURL,
+      year,
+    );
+
+    response.fold((failure) => emit(FavouriteError(failure: failure)), (
+      addedMovie,
+    ) {
+      favorites.add(addedMovie.data);
+      emit(FavouriteLoaded(getFavMovie: List.from(favorites)));
+    });
   }
 
-  final ApiManger apiManger;
-  Future<void> addMovieToFav(MovieDetailsEntity movie) async {
-    await apiManger.postData(
-      endPoint: EndPoints.favoritesAdd,
-      body: {
-        "movieId": movie.id,
-        "name": movie.title,
-        "rating": movie.rating,
-        "imageURL": movie.mediumCoverImage,
-        "year": movie.year,
-      },
-    );
-  }
-
-  Future<void> removeMovieFromFav(String movieId) async {
-    await apiManger.deleteData(
-      endPoint: "${EndPoints.removeFavoritesmovieId}/$movieId",
-    );
+  // ============================
+  //        CHECK FAVORITE
+  // ============================
+  bool isFavorite(String id) {
+    return favorites.any((m) => m.movieId == id);
   }
 }

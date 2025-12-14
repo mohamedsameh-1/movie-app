@@ -10,7 +10,7 @@ class RemoveFavoriteUseCase {
 
   RemoveFavoriteUseCase(this.repo);
 
-  Future<Either<Failure, RemoveFavoriteEntity>> call(String movieId) async {
+  Future<Either<Failure, RemoveFavoriteEntity>> excute(String movieId) async {
     return await repo.removeFavorite(movieId);
   }
 }

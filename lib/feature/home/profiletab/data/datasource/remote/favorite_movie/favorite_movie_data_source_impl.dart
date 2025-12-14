@@ -114,6 +114,7 @@ class FavoriteMovieDataSourceImpl implements FavoriteMovieDataSource {
     }
   }
 
+  /// remove movie
   @override
   Future<Either<Failure, RemoveFavoriteModel>> removeFavoriteMovies(
     String movieId,
@@ -129,7 +130,7 @@ class FavoriteMovieDataSourceImpl implements FavoriteMovieDataSource {
         //has internet
         var response = await apiManger.deleteData(
           // ApiConstants.baseUrl,
-          endPoint: EndPoints.removeFavoritesmovieId,
+          endPoint: "${EndPoints.removeFavoritesmovieId}/$movieId",
           headers: {"Authorization": "Bearer $token"},
         );
         print(response.data);

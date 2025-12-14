@@ -70,10 +70,10 @@ import '../../feature/home/profiletab/domain/repo/favorite_repo.dart' as _i786;
 import '../../feature/home/profiletab/domain/repo/profile_repo.dart' as _i857;
 import '../../feature/home/profiletab/domain/repo/reset_password_repo.dart'
     as _i380;
+import '../../feature/home/profiletab/domain/usecase/add_favorite_movie_use_case.dart'
+    as _i974;
 import '../../feature/home/profiletab/domain/usecase/delete_account_use_case.dart'
     as _i527;
-import '../../feature/home/profiletab/domain/usecase/favorite_movie_use_case.dart'
-    as _i510;
 import '../../feature/home/profiletab/domain/usecase/get_all_favorite_use_case.dart'
     as _i834;
 import '../../feature/home/profiletab/domain/usecase/get_profile_use_case.dart'
@@ -84,6 +84,8 @@ import '../../feature/home/profiletab/domain/usecase/reset_password_use_case.dar
     as _i610;
 import '../../feature/home/profiletab/ui/viewmodel/delete_account/delete_account_cubit.dart'
     as _i520;
+import '../../feature/home/profiletab/ui/viewmodel/favorite/favorite_cubit.dart'
+    as _i968;
 import '../../feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_cubit.dart'
     as _i937;
 import '../../feature/home/profiletab/ui/viewmodel/get_favorite_movie/get_favorite_movie_cubit.dart'
@@ -178,8 +180,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i700.ListMovieCubit(gh<_i563.GetListMovieUseCase>()));
     gh.factory<_i909.GetProfileCubit>(
         () => _i909.GetProfileCubit(gh<_i376.GetProfileUseCase>()));
-    gh.factory<_i510.AddFavoriteUseCase>(
-        () => _i510.AddFavoriteUseCase(gh<_i786.FavoriteRepo>()));
+    gh.factory<_i974.AddFavoriteUseCase>(
+        () => _i974.AddFavoriteUseCase(gh<_i786.FavoriteRepo>()));
     gh.factory<_i756.SearchMovieCubit>(
         () => _i756.SearchMovieCubit(gh<_i687.SearchMovieUseCase>()));
     gh.factory<_i938.BrowseCubit>(
@@ -193,6 +195,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1050.MovieSuggestionUseCase>(() =>
         _i1050.MovieSuggestionUseCase(
             movieDetailsRepo: gh<_i220.MovieDetailsRepo>()));
+    gh.factory<_i937.AddFavoriteCubit>(
+        () => _i937.AddFavoriteCubit(gh<_i974.AddFavoriteUseCase>()));
+    gh.factory<_i968.FavoriteCubit>(() => _i968.FavoriteCubit(
+          gh<_i974.AddFavoriteUseCase>(),
+          gh<_i334.RemoveFavoriteUseCase>(),
+          gh<_i834.GetFavoriteMoviesUseCase>(),
+        ));
     gh.factory<_i990.MovieSuggestionCubit>(
         () => _i990.MovieSuggestionCubit(gh<_i1050.MovieSuggestionUseCase>()));
     gh.factory<_i1069.LogInCubit>(
@@ -201,8 +210,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i50.RemoveFavoriteMovieCubit(gh<_i334.RemoveFavoriteUseCase>()));
     gh.factory<_i426.MovieDetailsCubit>(
         () => _i426.MovieDetailsCubit(gh<_i498.MovieDetailsUseCase>()));
-    gh.factory<_i937.AddFavoriteCubit>(
-        () => _i937.AddFavoriteCubit(gh<_i510.AddFavoriteUseCase>()));
     return this;
   }
 }

@@ -10,54 +10,56 @@ import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_elevate_btn.dart';
 import 'package:movie_app/feature/home/movie_details/ui/viewmodel/movie_details/movie_details_cubit.dart';
 import 'package:movie_app/feature/home/movie_details/ui/views/widgets/movie_suggestion.dart';
-import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_cubit.dart';
-import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_state.dart';
+import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite/favorite_cubit.dart';
+import 'package:movie_app/feature/home/profiletab/ui/viewmodel/favorite/favorite_state.dart';
 import 'package:movie_app/feature/home/ui/views/widgets/custom_row_icon_with_text.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../viewmodel/movie_details/movie_details_state.dart';
 
 class MovieDetailsView extends StatelessWidget {
   const MovieDetailsView({super.key});
 
-  // @override
   @override
   Widget build(BuildContext context) {
     MovieDetailsCubit movieDetailsCubit = getIt<MovieDetailsCubit>();
-    AddFavoriteCubit addFavoriteCubit = getIt<AddFavoriteCubit>();
-    // RemoveFavoriteMovieCubit removeFavoriteCubit =
-    //     getIt<RemoveFavoriteMovieCubit>();
-    // MovieSuggestionCubit movieSuggestionCubit = getIt<MovieSuggestionCubit>();
+    FavoriteCubit favoriteCubit = getIt<FavoriteCubit>();
+    favoriteCubit.loadFavorites();
+
     final movieIdArgument =
         ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         actions: [
-          BlocConsumer<AddFavoriteCubit, AddFavoriteState>(
-            bloc: addFavoriteCubit,
-            listener: (context, state) {},
-            builder: (context, state) {
-              return BlocBuilder(
+          BlocBuilder<FavoriteCubit, FavouriteState>(
+            bloc: favoriteCubit,
+            builder: (context, favState) {
+              return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
                 bloc: movieDetailsCubit,
                 builder: (context, dState) {
                   if (dState is MovieDetailsSuccessState) {
                     final movie = dState.movieDetailsResponseEntity.movie;
+
+                    final bool isFav = favoriteCubit.isFavorite(
+                      movie.id.toString(),
+                    );
                     return IconButton(
                       onPressed: () {
-                        addFavoriteCubit.addToFavorite(
-                          movie.id.toString(),
-                          movie.title,
-                          movie.rating,
-                          movie.url,
-                          movie.year.toString(),
+                        favoriteCubit.toggleFavorite(
+                          movieId: movie.id.toString(),
+                          name: movie.title,
+                          rating: movie.rating,
+                          imageURL: movie.largeCoverImage,
+                          year: movie.year.toString(),
                         );
-                        print('added movie to fav ${movie.title}');
                       },
-                      icon: Icon(Icons.bookmark_border_outlined),
+                      icon: Icon(
+                        isFav ? Icons.bookmark : Icons.bookmark_border,
+                        color: AppColors.yellow,
+                      ),
                     );
                   }
-                  return Icon(Icons.bookmark_border_outlined);
+                  return const Icon(Icons.bookmark_border_outlined);
                 },
               );
             },
@@ -280,41 +282,3 @@ class ImageWithRaduisItem extends StatelessWidget {
     );
   }
 }
-
-
-
-                        /// cast
-                        // SizedBox(height: 16.h),
-                        // Text(AppStrings.cast, style: AppStyles.w700S24White),
-                        // SizedBox(height: 8.h),
-                        // ListView.separated(
-                        //   shrinkWrap: true,
-                        //   physics: NeverScrollableScrollPhysics(),
-                        //   separatorBuilder: (context, index) =>
-                        //       SizedBox(height: 8.h),
-                        //   itemCount: 3,
-                        //   itemBuilder: (context, index) {
-                        //     return Container(
-                        //       decoration: BoxDecoration(
-                        //         color: AppColors.darkGreenGray,
-                        //         borderRadius: BorderRadius.circular(16.r),
-                        //       ),
-                        //       child: ListTile(
-                        //         leading: ClipRRect(
-                        //           borderRadius: BorderRadiusGeometry.circular(
-                        //             10.r,
-                        //           ),
-                        //           child: Image.asset(AppAssets.avatar1Image),
-                        //         ),
-                        //         title: Text(
-                        //           'Name : Hayley Atwell',
-                        //           style: AppStyles.w400S20White,
-                        //         ),
-                        //         subtitle: Text(
-                        //           'Character : Captain Carter',
-                        //           style: AppStyles.w400S20White,
-                        //         ),
-                        //       ),
-                        //     );
-                        //   },
-                        // ),
