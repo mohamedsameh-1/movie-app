@@ -13,6 +13,7 @@ A Flutter movie app with clean architecture, Cubit & Provider, Dio API, Hive cac
 - Localization support (Arabic & English)
 - Offline mode for previously fetched movies
 
+<!--
 ---
 
 ## Tech Stack
@@ -23,7 +24,7 @@ A Flutter movie app with clean architecture, Cubit & Provider, Dio API, Hive cac
 - SharedPreferences
 - easy_localization
 - flutter_bloc (Cubit) & provider
-
+-->
 ---
 
 ## Screenshots
