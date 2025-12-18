@@ -13,6 +13,12 @@ class SearchMovieFailureState extends SearchMovieState {
 }
 
 class SearchMovieSuccessState extends SearchMovieState {
-  final ListMovieResponseEntity listMovieResponseEntity;
-  SearchMovieSuccessState({required this.listMovieResponseEntity});
+  final List<MovieEntity> movies;
+  final bool isLoadingMore;
+  SearchMovieSuccessState({required this.movies, required this.isLoadingMore});
+}
+
+class PaginatSearchMovieLoadingState extends SearchMovieState {
+  final bool isLoadingMore;
+  PaginatSearchMovieLoadingState({required this.isLoadingMore});
 }

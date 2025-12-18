@@ -55,14 +55,28 @@ class SearchTabView extends StatelessWidget {
                       ),
                     );
                   } else if (state is SearchMovieSuccessState) {
-                    if (state.listMovieResponseEntity.movies.isEmpty) {
+                    if (state.movies.isEmpty) {
                       return Text(
                         AppStrings.notFound.tr(),
                         style: AppStyles.w400S20White,
                       );
                     }
-                    return CustomMovieIsNotEmpty(
-                      listMovieResponseEntity: state.listMovieResponseEntity,
+                    return NotificationListener<ScrollNotification>(
+                      onNotification: (notification) {
+                        if (notification is ScrollEndNotification &&
+                            notification.metrics.pixels ==
+                                notification.metrics.maxScrollExtent) {
+                          searchMovieCubit.getListMovie(
+                            searchMovieCubit.currentQuery,
+                            isLoadMore: true,
+                          );
+                        }
+                        return false;
+                      },
+                      child: CustomMovieIsNotEmpty(
+                        movies: state.movies,
+                        isLoadingMore: state.isLoadingMore,
+                      ),
                     );
                   }
                   return Text('Search is empty', style: AppStyles.w400S20White);
@@ -77,16 +91,18 @@ class SearchTabView extends StatelessWidget {
 }
 
 class CustomMovieIsNotEmpty extends StatelessWidget {
-  final ListMovieResponseEntity listMovieResponseEntity;
+  final List<MovieEntity> movies;
+  final bool isLoadingMore;
   const CustomMovieIsNotEmpty({
     super.key,
-    required this.listMovieResponseEntity,
+    required this.movies,
+    required this.isLoadingMore,
   });
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: listMovieResponseEntity.movies.length,
+      itemCount: movies.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16.w,
@@ -94,6 +110,14 @@ class CustomMovieIsNotEmpty extends StatelessWidget {
         childAspectRatio: 191 / 279.r,
       ),
       itemBuilder: (context, index) {
+        // if (index == movies.length) {
+        //   return const Center(
+        //     child: Padding(
+        //       padding: EdgeInsets.all(16),
+        //       child: Center(child: CircularProgressIndicator()),
+        //     ),
+        //   );
+        // }
         return Stack(
           children: [
             Positioned.fill(
@@ -102,15 +126,13 @@ class CustomMovieIsNotEmpty extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     AppRoutes.movieDetailsViews,
-                    arguments: listMovieResponseEntity.movies[index].id
-                        .toString(),
+                    arguments: movies[index].id.toString(),
                   );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(20.r),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        listMovieResponseEntity.movies[index].mediumCoverImage,
+                    imageUrl: movies[index].mediumCoverImage,
                     errorWidget: (context, url, error) => const Icon(
                       Icons.broken_image,
                       size: 40,
@@ -140,7 +162,7 @@ class CustomMovieIsNotEmpty extends StatelessWidget {
                   children: [
                     Text(
                       // '7.7',
-                      listMovieResponseEntity.movies[index].rating.toString(),
+                      movies[index].rating.toString(),
                       style: AppStyles.w400S16White,
                     ),
                     Icon(Icons.star, color: AppColors.yellow),

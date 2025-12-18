@@ -5,5 +5,6 @@ import 'package:movie_app/feature/home/hometab/domain/entities/list_movie_entity
 abstract class SearchMovieDataSource {
   Future<Either<Failure, ListMovieResponseEntity>> searchMovieByTitle(
     String movieTitle,
+    int page,
   );
 }

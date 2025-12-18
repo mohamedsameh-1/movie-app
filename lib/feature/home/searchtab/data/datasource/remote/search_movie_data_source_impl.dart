@@ -15,6 +15,7 @@ class SearchMovieDataSourceImpl implements SearchMovieDataSource {
   @override
   Future<Either<Failure, ListMovieResponseModel>> searchMovieByTitle(
     String movieTitle,
+    int page,
   ) async {
     try {
       var connectivityResult = await Connectivity().checkConnectivity();
@@ -25,7 +26,7 @@ class SearchMovieDataSourceImpl implements SearchMovieDataSource {
         var response = await apiManger.getData(
           ApiConstants.getmovieUrl,
           endPoint: EndPoints.listMovie,
-          queryParameters: {'query_term': movieTitle},
+          queryParameters: {'query_term': movieTitle, 'page': page},
         );
         print(response.data);
         var searchMovieResponse = ListMovieResponseModel.fromJson(

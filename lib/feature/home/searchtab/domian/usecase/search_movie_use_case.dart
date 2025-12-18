@@ -8,7 +8,10 @@ import 'package:movie_app/feature/home/searchtab/domian/repo/search_movie_repo.d
 class SearchMovieUseCase {
   final SearchMovieRepo searchMovieRepo;
   SearchMovieUseCase({required this.searchMovieRepo});
-  Future<Either<Failure, ListMovieResponseEntity>> excute(String movieTitle) {
-    return searchMovieRepo.searchMovieByTitle(movieTitle);
+  Future<Either<Failure, ListMovieResponseEntity>> excute(
+    String movieTitle,
+    int page,
+  ) {
+    return searchMovieRepo.searchMovieByTitle(movieTitle, page);
   }
 }

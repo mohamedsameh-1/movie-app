@@ -31,7 +31,7 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
           ///response success
           //caching success data
           await HiveCashing.saveAvailableNow(listMovieResponse);
-          print('cached list movie success');
+          // print('cached list movie success');
           // return data
           return Right(listMovieResponse);
         } else {
@@ -41,7 +41,8 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
           );
         }
       } else {
-        //   //Network Error
+        ///Network Error
+
         //   return Left(
         //     NetworkFailure(
         //       failureMessage: 'No InterNet , check Your Connections',

@@ -12,7 +12,8 @@ class SearchMovieRepoImpl implements SearchMovieRepo {
   @override
   Future<Either<Failure, ListMovieResponseEntity>> searchMovieByTitle(
     String movieTitle,
+    int page,
   ) {
-    return searchMovieDataSource.searchMovieByTitle(movieTitle);
+    return searchMovieDataSource.searchMovieByTitle(movieTitle, page);
   }
 }

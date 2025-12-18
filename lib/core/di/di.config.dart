@@ -86,8 +86,6 @@ import '../../feature/home/profiletab/ui/viewmodel/delete_account/delete_account
     as _i520;
 import '../../feature/home/profiletab/ui/viewmodel/favorite/favorite_cubit.dart'
     as _i968;
-import '../../feature/home/profiletab/ui/viewmodel/favorite_add/add_favorite_movie_cubit.dart'
-    as _i937;
 import '../../feature/home/profiletab/ui/viewmodel/get_favorite_movie/get_favorite_movie_cubit.dart'
     as _i425;
 import '../../feature/home/profiletab/ui/viewmodel/get_profile_cubit/get_profile_cubit.dart'
@@ -195,8 +193,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1050.MovieSuggestionUseCase>(() =>
         _i1050.MovieSuggestionUseCase(
             movieDetailsRepo: gh<_i220.MovieDetailsRepo>()));
-    gh.factory<_i937.AddFavoriteCubit>(
-        () => _i937.AddFavoriteCubit(gh<_i974.AddFavoriteUseCase>()));
     gh.factory<_i968.FavoriteCubit>(() => _i968.FavoriteCubit(
           gh<_i974.AddFavoriteUseCase>(),
           gh<_i334.RemoveFavoriteUseCase>(),
